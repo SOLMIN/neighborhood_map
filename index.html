@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Solmin Neighbourhood Map</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://use.fontawesome.com/1efa548da6.js"></script>
+
+</head>
+
+<body>
+    <section class="container">
+        <section id="map"></section>
+
+        <section style="z-index:902;">
+            <div id="sideMenu">
+
+                <aside class="imputDiv">
+                    <div class="labeltoggle" style="width:100%;text-align:right:">
+                        <p style="text-align:left;padding-top:15px;padding-left:30px;padding-right:30px;margin-bottom:-10px;">Search
+                            <span>
+					<button style="background:none;border:none;color:white;" data-bind="click: clickMe" class="btn pull-right"><i class="fa fa-bars pull-right"></i></button>
+					</span>
+                        </p>
+                    </div>
+
+                    <input id="searchBox" type="text" data-bind="textInput: searchBox, valueUpdate: 'afterkeydown'" autocomplete="off"></input>
+
+                </aside>
+
+                <aside id="locList">
+                    <ul id="List" data-bind="foreach: locListClone">
+                        <li><span data-bind="click:$parent.loadLocationInfo, text: title, attr: {id: id}"> </span>
+                            <p>
+                                <i><span  data-bind="text: address"> </span></i>
+                            </p>
+                            <hr class="style14">
+                        </li>
+                    </ul>
+                </aside>
+            </div>
+
+
+
+
+
+        </section>
+
+
+    </section>
+
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/knockout-3.4.1.js"></script>
+    <script src="js/jquery.slimscroll.min.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+
+    <script>
+        $(function() {
+            $('#locList').slimScroll({
+                height: '550px'
+            });
+        });
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjC_cuPZcR1yEPz4ScMbd91_cXLTmTtf8&v=3&callback=initMap" defer async onerror="mapError()">
+    </script>
+
+</body>
+
+</html>
